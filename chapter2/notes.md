@@ -79,8 +79,59 @@ type InMeM struct {
 	sync.Mutex
 	m map[string]int
 }
-
+===Resolve the previous adding a name as m sync.Mutex
 func New() *InMeM {
 	return &InMeM{m: make(m[string]int)}
 }
+
+[It shouldn't be used soley as some syntatic sugar to simplify accessing a field]
+[It shouldn't promoted data]
+
+
+#### 2.11 Not using functional options patterns
+
+Builder Pattern: so we can use method chaining. Return the object using in the builder.
+
+Functional options patterns: 
+An unexported struct holds the configuration options
+Each options is a funciton that reutnrs the same type
+
+type options struct {
+  port *int
+}
+type Option func(options *options) error
+
+#### 2.12 Project misorganization
+
+Better consistent.
+
+#### 2.13 Creating utility packages
+
+Better a name for thoughtfull.
+
+
+#### 2.14 Ignoring package name collisions
+
+Be carefull with the name 
+
+
+#### 2.15 Missing code documentation
+
+
+If is exported must be documented.
+
+#### 2.16 Not using linters.
+
+A linter is an automatic tool to analyze code and catch errors.
+
+vet
+errcheck
+gocyclo
+goconst
+
+code formatter
+gofmt
+goimports
+
+
 
