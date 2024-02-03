@@ -61,3 +61,26 @@ empty interface interface{} -> any
 
 #### 2.9 Being confused about when to use generics
 
+func foo[T any] (t T) {}
+
+Supplying a type argument is called initialization.
+K as comparable
+Resctricting type argument to match specific requirements is called a constraint.
+~int -> underlying int
+int -> only int
+
+generics for data structures [binary tree,heap]
+
+#### 2.10 NOt being aware of the possible problems with type embedding
+
+Embedding are useful for interfaces.
+
+type InMeM struct {
+	sync.Mutex
+	m map[string]int
+}
+
+func New() *InMeM {
+	return &InMeM{m: make(m[string]int)}
+}
+
