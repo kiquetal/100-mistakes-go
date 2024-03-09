@@ -18,14 +18,23 @@ func main() {
 		}
 	}
 	printAlloc()
-	two := keepFirstTwoElementsOnly(foos)
+	two := keepFirstTwoElementsOnly2(foos)
 	runtime.GC()
 	printAlloc()
 	runtime.KeepAlive(two)
 }
 
 func keepFirstTwoElementsOnly(foos []Foo) interface{} {
+
 	return foos[:2]
+}
+
+func keepFirstTwoElementsOnly2(foos []Foo) interface{} {
+
+	res := make([]Foo, 2)
+	copy(res, foos)
+	return res
+
 }
 
 func printAlloc() {
