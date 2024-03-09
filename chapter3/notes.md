@@ -66,6 +66,34 @@ change the return for nil, so the comparission will work.
 the same strategy should be applied for maps.
 
 
+#### 2.24 Not making slice copies correctly.
+
+src := []int{0,1,2}
+dst := make([]int, len(src))
+
+#### 2.25 Unexpected side effects using slice append
+
+```
+func main() {
+	s := []int{1,2,3}
+  f(s[:2])
+  fmt.Println(s)
+}
+func f(s []int) {
+	s = append(s, 4)
+}
+```
+- You should use copy() to avoid side effects.
+
+- Can use [:2:2] - full slice expression to avoid side effects.
+
+#### 3.10.1 ### Leaking capacity when slicing a slice
+
+Using the full slice option is not a option.
+
+As a rule of thumb, remember that slicing a large slice or array can lead 
+to potential high memory consumption. The remaining space won't be reclaimed 
+by the GC, and we can keep a large backing array despite using only a few
+elements. Using a slice is the solution to preven such case.
 
 
-- 
